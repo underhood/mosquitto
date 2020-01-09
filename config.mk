@@ -80,7 +80,7 @@ WITH_SOCKS:=yes
 WITH_STRIP:=no
 
 # Build static libraries
-WITH_STATIC_LIBRARIES:=no
+WITH_STATIC_LIBRARIES:=yes
 
 # Use this variable to add extra library dependencies when building the clients
 # with the static libmosquitto library. This may be required on some systems
@@ -127,10 +127,10 @@ ifeq ($(UNAME),SunOS)
 	ifeq ($(CC),cc)
 		CFLAGS?=-O
 	else
-		CFLAGS?=-Wall -ggdb -O2
+		CFLAGS?=-Wall db -O2
 	endif
 else
-	CFLAGS?=-Wall -ggdb -O2
+	CFLAGS?=-Wall -O2
 endif
 
 STATIC_LIB_DEPS:=

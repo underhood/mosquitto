@@ -74,9 +74,9 @@ endif
 	$(INSTALL) -d "${DESTDIR}${libdir}/pkgconfig"
 	$(INSTALL) -m644 ../libmosquitto.pc.in "${DESTDIR}${libdir}/pkgconfig/libmosquitto.pc"
 	sed -i -e "s#@CMAKE_INSTALL_PREFIX@#${prefix}#" -e "s#@VERSION@#${VERSION}#" "${DESTDIR}${libdir}/pkgconfig/libmosquitto.pc"
-ifeq ($(WITH_SHARED_LIBRARIES),yes)
-	$(MAKE) -C cpp install
-endif
+#ifeq ($(WITH_SHARED_LIBRARIES),yes)
+#	$(MAKE) -C cpp install
+#endif
 
 uninstall :
 	-rm -f "${DESTDIR}${libdir}/libmosquitto.so.${SOVERSION}"
