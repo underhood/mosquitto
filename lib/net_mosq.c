@@ -868,6 +868,11 @@ int net__socket_connect_step3(struct mosquitto *mosq, const char *host)
 /* Create a socket and connect it to 'ip' on port 'port'.  */
 int net__socket_connect(struct mosquitto *mosq, const char *host, uint16_t port, const char *bind_address, bool blocking)
 {
+	if(mosq->external_write_fnc) {
+		mosq->sock = 777;
+		return MOSQ_ERR_SUCCESS;
+	}
+
 	mosq_sock_t sock = INVALID_SOCKET;
 	int rc, rc2;
 
@@ -897,6 +902,10 @@ ssize_t net__read(struct mosquitto *mosq, void *buf, size_t count)
 	int err;
 #endif
 	assert(mosq);
+
+	if(mosq->external_read_fnc)
+		return mosq->external_read_fnc(buf, count);
+
 	errno = 0;
 #ifdef WITH_TLS
 	if(mosq->ssl){
@@ -943,6 +952,9 @@ ssize_t net__write(struct mosquitto *mosq, void *buf, size_t count)
 	int err;
 #endif
 	assert(mosq);
+
+	if(mosq->external_write_fnc)
+		return mosq->external_write_fnc(buf, count);
 
 	errno = 0;
 #ifdef WITH_TLS

@@ -345,6 +345,8 @@ struct mosquitto {
 #ifdef WITH_EPOLL
 	uint32_t events;
 #endif
+	size_t (*external_read_fnc)(void *buf, size_t count);
+	size_t (*external_write_fnc)(void *buf, size_t count);
 };
 
 #define STREMPTY(str) (str[0] == '\0')
