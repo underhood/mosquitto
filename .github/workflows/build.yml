@@ -1,5 +1,8 @@
 name: Build Release Artifacts
-on: release
+on:
+  release:
+    types:
+      - created
 jobs:
   build-linux:
     name: Build Linux
