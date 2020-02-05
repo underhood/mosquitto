@@ -23,8 +23,11 @@ jobs:
         run: |
           docker run -e arch=${{ matrix.arch }} -e tag=${{ github.event.release.tag_name }} -v $PWD:/build ${{ matrix.arch }}/${CONTAINER} /build/.github/build-linux.sh
       - name: Upload
-        uses: JasonEtco/upload-to-release@master
-        with:
-          args: libmosquitto-${{ github.event.release.tag_name }}-linux-${{ matrix.arch }}.tar.gz application/gzip
+        uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          asset_path: ./libmosquitto-${{ github.event.release.tag_name }}-linux-${{ matrix.arch }}.tar.gz
+          asset_name: libmosquitto-${{ github.event.release.tag_name }}-linux-${{ matrix.arch }}.tar.gz
+          asset_content_type: application/gzip
+          upload_url: ${{ github.event.release.upload_url }}
