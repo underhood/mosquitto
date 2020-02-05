@@ -21,7 +21,7 @@ jobs:
           docker run -it -e arch=${{ matrix.arch }} -e tag=${{ github.event.release.tag_name }} -v $PWD:/build ${{ matrix.arch }}/${{ CONTAINER }} /build/.github/build-linux.sh
       - name: Upload
         uses: JasonEtco/upload-to-release@master
-          with:
-            args: libmosquitto-${{ github.event.release.tag_name }}-linux-${{ matrix.arch }}.tar.gz application/gzip
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: libmosquitto-${{ github.event.release.tag_name }}-linux-${{ matrix.arch }}.tar.gz application/gzip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
