@@ -18,7 +18,7 @@ jobs:
           docker pull ${{ matrix.arch }}/${CONTAINER}
       - name: Build
         run: |
-          docker run -it -e arch=${{ matrix.arch }} -e tag=${{ github.event.release.tag_name }} -v $PWD:/build ${{ matrix.arch }}/${CONTAINER} /build/.github/build-linux.sh
+          docker run -e arch=${{ matrix.arch }} -e tag=${{ github.event.release.tag_name }} -v $PWD:/build ${{ matrix.arch }}/${CONTAINER} /build/.github/build-linux.sh
       - name: Upload
         uses: JasonEtco/upload-to-release@master
         with:
