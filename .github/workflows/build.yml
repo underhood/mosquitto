@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         arch: ['amd64', 'i386', 'arm32v7', 'arm64v8', 'arm32v6']
-    jobs:
+    steps:
       - name: Check Out
         uses: actions/checkout@v1
       - name: Prepare Docker
