@@ -7,4 +7,4 @@ make -C /build/lib || exit 1
 
 cd /build || exit 1
 # shellcheck disable=SC2154
-tar -cvzf "libmosquitto-${tag}-${arch}".tar.gz lib/libmosquitto.a lib/*.h || exit 1
+tar -cvzf "libmosquitto-${tag}-linux-${arch}".tar.gz lib/libmosquitto.a lib/*.h || exit 1
