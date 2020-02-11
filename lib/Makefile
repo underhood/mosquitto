@@ -55,9 +55,10 @@ ifeq ($(WITH_STATIC_LIBRARIES),yes)
 endif
 
 all : ${ALL_DEPS}
-ifeq ($(WITH_SHARED_LIBRARIES),yes)
-	$(MAKE) -C cpp
-endif
+# Netdata specific - disable cpp build, will need to be removed before pushing upstream
+#ifeq ($(WITH_SHARED_LIBRARIES),yes)
+#	$(MAKE) -C cpp
+#endif
 
 install : all
 	$(INSTALL) -d "${DESTDIR}${libdir}/"
