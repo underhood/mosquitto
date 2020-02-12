@@ -75,7 +75,7 @@ int mosquitto_lib_cleanup(void)
 	return MOSQ_ERR_SUCCESS;
 }
 
-int mosquitto_external_callbacks_set(struct mosquitto *mosq, size_t (*external_write_fnc)(void *buf, size_t count), size_t (*external_read_fnc)(void *buf, size_t count))
+void mosquitto_external_callbacks_set(struct mosquitto *mosq, size_t (*external_write_fnc)(void *buf, size_t count), size_t (*external_read_fnc)(void *buf, size_t count))
 {
 	if(mosq) {
 		mosq->external_read_fnc = external_read_fnc;

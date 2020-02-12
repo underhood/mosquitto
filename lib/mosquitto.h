@@ -222,7 +222,7 @@ libmosq_EXPORT int mosquitto_lib_init(void);
  */
 libmosq_EXPORT int mosquitto_lib_cleanup(void);
 
-libmosq_EXPORT int mosquitto_external_callbacks_set(struct mosquitto *mosq, size_t (*external_write_fnc)(void *buf, size_t count), size_t (*external_read_fnc)(void *buf, size_t count));
+libmosq_EXPORT void mosquitto_external_callbacks_set(struct mosquitto *mosq, size_t (*external_write_fnc)(void *buf, size_t count), size_t (*external_read_fnc)(void *buf, size_t count));
 
 /* ======================================================================
  *
