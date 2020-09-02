@@ -48,6 +48,8 @@ struct mosquitto_db;
 #define INVALID_SOCKET -1
 #endif
 
+#define PLACEHOLDER_SOCKET -2
+
 /* Macros for accessing the MSB and LSB of a uint16_t */
 #define MOSQ_MSB(A) (uint8_t)((A & 0xFF00) >> 8)
 #define MOSQ_LSB(A) (uint8_t)(A & 0x00FF)
